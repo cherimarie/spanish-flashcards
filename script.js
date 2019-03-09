@@ -85,17 +85,35 @@ const set2 = []
 
 let ACTIVE_SET = set1
 let ACTIVE_CARD = 0
+const languageSwapper = {'en': 'es', 'es': 'en'}
+let ACTIVE_LANGUAGE = 'en'
 
 const cardContainer = document.getElementById("cards")
 
 const setButtons = document.querySelectorAll('button[class^="set"]')
 setButtons.forEach(function(setButt){
   setButt.addEventListener("click", function(){
-      ACTIVE_SET = eval(setButt.classList[0])
-      startSet()
+    selectActiveSet(setButt)
   })
-
 })
+function selectActiveSet(setButt){
+  setButtons.forEach(function(butt){
+    butt.classList.remove("active")
+  })
+  ACTIVE_SET = eval(setButt.classList[0])
+  setButt.classList.add("active")
+  startSet()
+}
+
+const languageButton = document.querySelector('#language')
+languageButton.addEventListener("click", function(){
+  ACTIVE_LANGUAGE = languageSwapper[ACTIVE_LANGUAGE]
+  displayInActiveLanguage()
+})
+function displayInActiveLanguage(){
+  cardContainer.setAttribute("class", `show-${ACTIVE_LANGUAGE}`)
+  languageButton.innerHTML = ACTIVE_LANGUAGE
+}
 
 document.querySelector("#prev").addEventListener("click", function(){
   if(ACTIVE_CARD > 0){
@@ -122,11 +140,12 @@ function startSet(){
 }
 
 function drawCard(set, card){
+  cardContainer.innerHTML = ''
   el = set[card]
   if(!el){
     return
   }
-  cardContainer.innerHTML = ''
+
   let newCard = document.createElement("div")
   let newEs = document.createElement("p")
   newEs.setAttribute("class", "es")
@@ -139,4 +158,9 @@ function drawCard(set, card){
   cardContainer.append(newCard)
 }
 
-window.onload = startSet
+function loadUp(){
+  displayInActiveLanguage()
+  selectActiveSet(setButtons[0])
+}
+
+window.onload = loadUp

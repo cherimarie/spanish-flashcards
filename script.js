@@ -106,10 +106,12 @@ function selectActiveSet(setButt){
 }
 
 const languageButton = document.querySelector('#language')
-languageButton.addEventListener("click", function(){
+languageButton.addEventListener("click", swapLanguages)
+document.querySelector("#cards").addEventListener("click", swapLanguages)
+function swapLanguages(){
   ACTIVE_LANGUAGE = languageSwapper[ACTIVE_LANGUAGE]
   displayInActiveLanguage()
-})
+}
 function displayInActiveLanguage(){
   cardContainer.setAttribute("class", `show-${ACTIVE_LANGUAGE}`)
   languageButton.innerHTML = ACTIVE_LANGUAGE
@@ -131,7 +133,6 @@ document.querySelector("#next").addEventListener("click", function(){
 
 document.querySelector("#shuffle").addEventListener("click", function(){
   ACTIVE_CARD = Math.floor(Math.random() * Math.floor(ACTIVE_SET.length))
-
   drawCard(ACTIVE_SET, ACTIVE_CARD)
 })
 
@@ -157,6 +158,24 @@ function drawCard(set, card){
   newCard.append(newEn)
   cardContainer.append(newCard)
 }
+
+document.querySelector(".answers #display").addEventListener("click", function(){
+  const vocabContainer = document.getElementById("vocab")
+  ACTIVE_SET.forEach(function(el){
+    let newVocab = document.createElement("p")
+    let newEs = document.createElement("span")
+    newEs.setAttribute("class", "es")
+    newEs.innerHTML = el.es
+    let separator = document.createTextNode(" : ")
+    let newEn = document.createElement("span")
+    newEn.setAttribute("class", "en")
+    newEn.innerHTML = el.en
+    newVocab.append(newEs)
+    newVocab.append(separator)
+    newVocab.append(newEn)
+    vocabContainer.append(newVocab)
+  })
+})
 
 function loadUp(){
   displayInActiveLanguage()

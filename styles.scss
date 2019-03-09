@@ -1,0 +1,92 @@
+$background: #C1F8EA;
+$spanish: rgb(114, 75, 230);
+$english: #E64B71;
+$accent: #BFE64B;
+$spare: #4BE6C0;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+   font-family: monospace;
+   color: navy;
+   background-color: $background;
+}
+
+.tools {
+  display: flex;
+  justify-content: space-around;
+}
+
+button {
+  background-color: white;
+  border: 1px solid $accent;
+  border-radius: 25px;
+  color: black;
+  padding: .25rem 1rem;
+}
+
+button.active {
+  background-color: $accent;
+}
+
+button#language {
+  padding: .5rem;
+  width: 4rem;
+  font-size: 115%;
+}
+
+#cards {
+   text-align: center;
+   min-height: 175px;
+   margin: 1rem;
+}
+
+#cards > div {
+   padding: 1rem;
+   border: 1px solid;
+   font-size: 1.5rem;
+}
+
+#cards.show-en > div{
+  border-color: $english;
+}
+
+#cards.show-es > div{
+  border-color: $spanish;
+}
+
+.es {
+  color: $spanish;
+}
+
+.en {
+  color: $english;
+}
+
+#cards.show-en .es, #cards.show-es .en {
+  display: none;
+}
+
+#cards.show-en .en, #cards.show-es .es {
+  display: block;
+}
+
+.answers {
+  border-top: 1px solid navy;
+  margin: 2rem 2rem;
+}
+
+.answers .en, .answers .es {
+  font-size: 1.25rem;
+}
+
+.answers #display {
+  text-align: center;
+  margin: 1rem;
+}
+
+.answers #display:hover {
+  text-decoration: underline;
+}

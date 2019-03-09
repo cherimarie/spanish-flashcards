@@ -1,0 +1,25 @@
+[{
+  "word":"caminar",
+  "forms":[
+    {
+      "yo":"camino",
+      "tu":"caminas",
+      "el, ella, usted":"camina",
+      "nosotros":"caminamos",
+      "vosotros":"caminaís",
+      "ellos, ellas, ustedes":"caminan"
+    }
+  ]
+  },{
+    "word":"vivir",
+    "forms":[
+      {
+        "yo":"vivo",
+        "tu":"vives",
+        "el, ella, usted":"vive",
+        "nosotros":"vivimos",
+        "vosotros":"viveís",
+        "ellos, ellas, ustedes":"viven"
+      }
+    ]
+    }]

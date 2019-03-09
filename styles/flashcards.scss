@@ -1,18 +1,4 @@
-$background: #C1F8EA;
-$spanish: rgb(114, 75, 230);
-$english: #E64B71;
-$accent: #BFE64B;
-$spare: #4BE6C0;
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-   font-family: monospace;
-   color: navy;
-   background-color: $background;
-}
+@import 'base.scss'; 
 
 .tools {
   display: flex;
